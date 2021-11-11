@@ -36,4 +36,10 @@ contract MyContract {
     {
         return keccak256(abi.encodePacked(a)) == keccak256(abi.encodePacked(b));
     }
+
+    //185 basis points = 1.85 %
+    function calculateFee(uint256 amount) external pure returns (uint256) {
+        require((amount / 10000) * 10000 == amount, "too small");
+        return (amount / 1000) * 185;
+    }
 }
